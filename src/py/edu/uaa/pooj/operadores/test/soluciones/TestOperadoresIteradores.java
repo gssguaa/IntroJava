@@ -23,6 +23,7 @@ public class TestOperadoresIteradores {
 			resultado = numeros[0];
 		}
 
+		//los arrays en java comienzan en cero (0)
 		for (int i = 1; i < numeros.length; i++) {
 			resultado = resultado - numeros[i];
 		}
@@ -34,6 +35,7 @@ public class TestOperadoresIteradores {
 	 * PRACTICA: implementar la multiplicacion recibiendo un array de enteros
 	 */
 	public int multiplicar(int[] numeros) {
+		//se inicializa en 1 porque cualquier numero multiplicado por cero es cero
 		int resultado = 1;
 		for (int i = 0; i < numeros.length; i++) {
 			resultado = resultado * numeros[i];

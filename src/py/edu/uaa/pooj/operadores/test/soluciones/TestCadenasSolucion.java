@@ -53,7 +53,7 @@ public class TestCadenasSolucion {
 		resultado = testCadenas.subcadena("Matias", 0, 3);
 		System.out.println("Substring Matias 0,3 = " + resultado);
 		
-		char res = testCadenas.obtenerCaracterCadena("Peres", 0);
+		char res = testCadenas.obtenerCaracterCadena("Perez", 0);
 		System.out.println("Obtener primer caracter de apellido Perez = " + res);
 		
 		
@@ -68,7 +68,7 @@ public class TestCadenasSolucion {
 		
 		//verificacion si contiene
 		verificacion = testCadenas.verificarSiContiene("Electroencefalografista", "enscefalo");
-		System.out.println("Verificar si termina con 'Electroencefalografista' 'enscefalo' = " + verificacion);
+		System.out.println("Verificar si 'Electroencefalografista' contiene 'enscefalo' = " + verificacion);
 		
 		//obtencion de indice de subcadena
 		int indiceSubCadena = testCadenas.obtenerIndiceSubcadena("Electroencefalografista", "encefalo");
