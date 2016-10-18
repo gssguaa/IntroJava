@@ -1,4 +1,4 @@
-package py.edu.uaa.pooj.ejerciciomonedero;
+package py.edu.uaa.pooj.ejercicio_practica2dop.ejercicio0;
 
 public class Main {
 	public static void main(String[] args) {
