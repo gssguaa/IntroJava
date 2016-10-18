@@ -15,12 +15,16 @@ public class CuentaCorriente extends Cuenta {
 
 	private int montoMaximoSobregiro;
 	
+	//constructor vacio
+	public CuentaCorriente() {
+	}
+	
 	//constructor
 	public CuentaCorriente(Cliente cliente, int nroCuenta, int saldo) {
 		//super = constructor de la clase padre, osea Cuenta
 		super(cliente, nroCuenta, saldo);
 	}
-	
+
 	@Override
 	public String debitar(int importe) {
 		//variable auxiliar saldoActual
@@ -51,7 +55,15 @@ public class CuentaCorriente extends Cuenta {
 
 	public void setMontoMaximoSobregiro(int montoMaximoSobregiro) {
 		this.montoMaximoSobregiro = montoMaximoSobregiro;
+	}
+
+	@Override
+	public String toString() {
+		return "CuentaCorriente [montoMaximoSobregiro=" + montoMaximoSobregiro
+				+ ", getCliente()=" + getCliente() + ", getNroCuenta()="
+				+ getNroCuenta() + ", getSaldo()=" + getSaldo() + "]";
 	}	
+	
 	
 
 }

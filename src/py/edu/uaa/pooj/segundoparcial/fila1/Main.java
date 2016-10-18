@@ -15,14 +15,21 @@ public class Main {
 		//se crea la cuenta
 		CuentaCorriente c = new CuentaCorriente(cliente, 7777, 1000000);
 		c.setMontoMaximoSobregiro(1500000);
+		
 	
 		//debito aprobado
 		System.out.println(c.debitar(1000000));
-		System.out.println(c.getSaldo());
+		System.out.println(c.toString());
 		
 		//debito sobregirado
 		System.out.println(c.debitar(1000000));
 		System.out.println(c.getSaldo());
+				
+		//creacion de cuentacorriente sin parameros (llama al constructor vacio)
+		CuentaCorriente cuenta2 = new CuentaCorriente();
 		
+		
+		
+
 	}
 }

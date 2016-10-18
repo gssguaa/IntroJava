@@ -7,6 +7,9 @@ implementar los metodos abstractos debitar(recibe un importe y resta del saldo) 
 saldo). Se debe en la clase Cuenta crear un constructor que reciba los atributos de cliente, nroCuenta y saldo.
  */
 
+//clases abstractas = clases que no se pueden instanciar
+//se usa para crear jerarquia y heredar atributos y comportamiento
+//comunes en clases hijas
 public abstract class Cuenta {
 	
 	private Cliente cliente;
@@ -16,12 +19,14 @@ public abstract class Cuenta {
 	//se definen los metodos abstractos que tienen que implementar las 
 	//clases que hereden de cuenta.
 	
+
 	/**
 	 * Metodo que recibe un importe y debita del saldo de la cuenta
 	 * @param importe a ser debitado de la cuenta
 	 * @return mensaje que determina el estado de la operacion
 	 */
-	
+	//metodos que se declaran pero no se implementan
+	//esto significa que no tiene {}
 	public abstract String debitar(int importe);
 	
 	/**
@@ -31,6 +36,7 @@ public abstract class Cuenta {
 	 */
 	public abstract String acreditar(int importe);
 	
+	//CRTL + SHIFT = C <-- para comentar bloques de codigo
 	//constructor vacio
 	public Cuenta(){
 		
@@ -39,7 +45,6 @@ public abstract class Cuenta {
 	//constructor con todos los parametros de la clase (cliente, nroCuenta, saldo)
 	public Cuenta(Cliente cliente, int nroCuenta, int saldo ){
 		this.cliente=cliente;		
-		this.nroCuenta=nroCuenta;
 		this.saldo=saldo;
 				
 		Integer nroCuentaL = new Integer(nroCuenta);
@@ -73,5 +78,17 @@ public abstract class Cuenta {
 	public void setSaldo(int saldo) {
 		this.saldo = saldo;
 	}
+
+	//constructor generado por click derecho --> source --> generate 
+	//constructor using field
+	//seleccionar los atributos que se quieran
+	//finish
+	
+	public Cuenta(Cliente cliente, int saldo) {
+		super();
+		this.cliente = cliente;
+		this.saldo = saldo;
+	}
+
 
 }
