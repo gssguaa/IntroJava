@@ -1,4 +1,6 @@
 package py.edu.uaa.pooj.segundoparcial.fila1;
+
+import py.edu.uaa.pooj.primerparcial.fila2.cines.Sala;
 /*
  * Crea una clase CuentaCorriente que herede de Cuenta, que implemente todos los metodos abstractos que su clase padre
 obligue. La clase CuentaCorriente tambien agrega un atributo que es montoMaximoSobregiro.
@@ -28,7 +30,9 @@ public class CuentaCorriente extends Cuenta {
 	@Override
 	public String debitar(int importe) {
 		//variable auxiliar saldoActual
-		int saldoActual = this.getSaldo();
+//		int tmp = montoMaximoSobregiro;
+//		int tmp2 = saldo;
+		int saldoActual = saldo;
 		if(importe > saldoActual){
 			if (importe > montoMaximoSobregiro){
 				return "REPROBADO";
@@ -62,8 +66,20 @@ public class CuentaCorriente extends Cuenta {
 		return "CuentaCorriente [montoMaximoSobregiro=" + montoMaximoSobregiro
 				+ ", getCliente()=" + getCliente() + ", getNroCuenta()="
 				+ getNroCuenta() + ", getSaldo()=" + getSaldo() + "]";
-	}	
-	
-	
+	}
+//
+//	@Override
+//	public String debitar(int importe) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	@Override
+//	public String acreditar(int importe) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}	
+//	
+//	
 
 }

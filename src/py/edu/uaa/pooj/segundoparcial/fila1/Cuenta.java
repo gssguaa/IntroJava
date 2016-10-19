@@ -14,7 +14,7 @@ public abstract class Cuenta {
 	
 	private Cliente cliente;
 	private int nroCuenta;
-	private int saldo;
+	protected int saldo;
 	
 	//se definen los metodos abstractos que tienen que implementar las 
 	//clases que hereden de cuenta.
@@ -48,7 +48,7 @@ public abstract class Cuenta {
 		this.saldo=saldo;
 				
 		Integer nroCuentaL = new Integer(nroCuenta);
-		if (nroCuentaL.toString().length() >= 9) {
+		if (nroCuentaL.toString().length() == 9) {
 			this.nroCuenta = nroCuenta;
 		}
 				
