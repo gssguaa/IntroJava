@@ -26,22 +26,28 @@ public class CuentaCorriente extends Cuenta {
 		//super = constructor de la clase padre, osea Cuenta
 		super(cliente, nroCuenta, saldo);
 	}
+	
+	/*
+	 * TODO constructor que reciba todos los parametros de la clase,
+	 *  incluyendo montoMaximoSobregiro
+	 */
+	
 
 	@Override
 	public String debitar(int importe) {
 		//variable auxiliar saldoActual
-//		int tmp = montoMaximoSobregiro;
-//		int tmp2 = saldo;
-		int saldoActual = saldo;
-		if(importe > saldoActual){
+		
+		//int saldoActual = this.getSaldo();
+		if(importe > saldo){
 			if (importe > montoMaximoSobregiro){
 				return "REPROBADO";
 			}else{
-				this.setSaldo(saldoActual - importe);
+				//this.setSaldo(saldo - importe);
+				saldo = saldo -importe;
 				return "SOBREGIRADO";
 			}
 		}
-		this.setSaldo(saldoActual - importe);
+		this.setSaldo(saldo - importe);
 		return "APROBADO";
 	}
 
@@ -67,19 +73,6 @@ public class CuentaCorriente extends Cuenta {
 				+ ", getCliente()=" + getCliente() + ", getNroCuenta()="
 				+ getNroCuenta() + ", getSaldo()=" + getSaldo() + "]";
 	}
-//
-//	@Override
-//	public String debitar(int importe) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	@Override
-//	public String acreditar(int importe) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}	
-//	
-//	
+
 
 }

@@ -2,8 +2,10 @@ package py.edu.uaa.pooj.segundoparcial.fila1;
 /*
  * 
 Por ultimo crea una clase llamada Main donde:
-• Se debe crear un objeto del tipo CuentaCorriente e invocar al metodo debito, aprobado
-• Se debe crear un objeto del tipo CuentaCorriente e invocar al metodo debito, sobregirado
+• Se debe crear un objeto del tipo CuentaCorriente e 
+invocar al metodo debito, aprobado
+• Se debe crear un objeto del tipo CuentaCorriente e 
+invocar al metodo debito, sobregirado
  */
 public class Main {
 
@@ -18,15 +20,17 @@ public class Main {
 		
 	
 		//debito aprobado
+		//System.out.println(c.toString());
 		System.out.println(c.debitar(1000000));
 		System.out.println(c.toString());
 		
 		//debito sobregirado
+		//System.out.println(c.toString());
 		System.out.println(c.debitar(1000000));
-		System.out.println(c.getSaldo());
-				
+		System.out.println(c.toString());
+			
 		//creacion de cuentacorriente sin parameros (llama al constructor vacio)
-		CuentaCorriente cuenta2 = new CuentaCorriente();
+		//CuentaCorriente cuenta2 = new CuentaCorriente();
 		
 		
 		

@@ -12,13 +12,16 @@ saldo). Se debe en la clase Cuenta crear un constructor que reciba los atributos
 //comunes en clases hijas
 public abstract class Cuenta {
 	
-	private Cliente cliente;
-	private int nroCuenta;
-	protected int saldo;
 	
+	//Modificadores de acceso
+	//https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html
 	//se definen los metodos abstractos que tienen que implementar las 
 	//clases que hereden de cuenta.
 	
+	private Cliente cliente;
+	private int nroCuenta;
+	protected int saldo;
+
 
 	/**
 	 * Metodo que recibe un importe y debita del saldo de la cuenta
