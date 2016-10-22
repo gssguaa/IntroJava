@@ -8,18 +8,30 @@ import org.junit.Test;
 public class CuentaCorrrienteTest {
 
 	//TODO debitarAprobado
+	//crear en este metodo el cliente, la cuenta corriente con los datos correspondientes
+	//de manera a que retorne el String "APROBADO"
+	//Validar que el string de retorno sea como se espera (Assert)
 	@Test
 	public void debitarAprobado() {
-		fail("Not yet implemented");
 	}
 
 	//TODO debitarRechazado
+	//crear en este metodo el cliente, la cuenta corriente con los datos correspondientes
+	//de manera a que retorne el String "RECHAZADO"
+	//Validar que el string de retorno sea como se espera (Assert)
 	@Test
 	public void debitarRechazado() {
-		fail("Not yet implemented");
 	}
 
-	//TODO acreditar
+	//TODO debitarSobregirado
+	//crear en este metodo el cliente, la cuenta corriente con los datos correspondientes
+	//de manera a que retorne el String "SOBREGIRADO"
+	//Validar que el string de retorno sea como se espera (Assert)
+	@Test
+	public void debitarSobregirado() {
+	}
+
+	
 	@Test
 	public void acreditar() {
 		//Se crea el cliente
