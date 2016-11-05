@@ -52,6 +52,13 @@ public class Alumno {
 	public void setNroCelular(String nroCelular) {
 		this.nroCelular = nroCelular;
 	}
+
+	@Override
+	public String toString() {
+		return "Alumno [nroCedula=" + nroCedula + ", nombreApellido="
+				+ nombreApellido + ", email=" + email + ", nroCelular="
+				+ nroCelular + "]";
+	}
 	
 	
 

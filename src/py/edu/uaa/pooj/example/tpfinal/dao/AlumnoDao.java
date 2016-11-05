@@ -5,9 +5,11 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import py.edu.uaa.pooj.example.tpfinal.model.Alumno;
-
 import py.edu.uaa.pooj.example.tpfinal.model.Curso;
 
 /**
@@ -22,8 +24,9 @@ public class AlumnoDao {
 
 	private static final String DB_DRIVER = "org.postgresql.Driver";
 	private static final String DB_CONNECTION = "jdbc:postgresql://localhost:5432/practica";
-	private static final String DB_USER = "postgres";
+	private static final String DB_USER = "gsoria";
 	private static final String DB_PASSWORD = "postgres";
+	
 	
 	/**
 	 * Metodo que permite validar si un alumno esta registrado en un determinado curso
@@ -125,6 +128,49 @@ public class AlumnoDao {
  
 		}
  
+	}
+
+	public List<Alumno> recuperarAlumnos() {
+		Connection dbConnection = null;
+		Statement statement = null;
+
+		String query = "SELECT * FROM alumno";
+		List<Alumno> alumnos = new ArrayList<Alumno>();
+		
+		try {
+			dbConnection = getDBConnection();
+			ResultSet rs = dbConnection.createStatement().executeQuery(query);
+			while (rs.next()) {
+				Alumno alumno = new Alumno();
+				
+				alumno.setNroCedula(rs.getInt(1));
+				alumno.setNombreApellido(rs.getString(2));
+				alumno.setEmail(rs.getString(3));
+				alumno.setNroCelular(rs.getString(4));
+				
+				alumnos.add(alumno);
+			}			
+		}
+
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+
+		} finally {
+			try {
+				if (statement != null) {
+					statement.close();
+				}
+	 
+				if (dbConnection != null) {
+					dbConnection.close();
+				}
+			} catch (Exception e2) {
+				System.out.println(e2.getMessage());
+			}
+		}
+		
+		return alumnos;
+
 	}
  
 	private static Connection getDBConnection() {
