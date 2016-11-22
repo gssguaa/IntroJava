@@ -12,15 +12,17 @@ public class Alumno {
 	private String nombreApellido;
 	private String email;
 	private String nroCelular;
+	private Nacionalidad nacionalidad;
 	
 	//constructor
 	public Alumno(int nroCedula, String nombreApellido, String email,
-			String nroCelular) {
+			String nroCelular, Nacionalidad nacionalidad) {
 		super();
 		this.nroCedula = nroCedula;
 		this.nombreApellido = nombreApellido;
 		this.email = email;
 		this.nroCelular = nroCelular;
+		this.nacionalidad = nacionalidad;
 	}
 	
 	public Alumno() {
@@ -52,6 +54,13 @@ public class Alumno {
 	public void setNroCelular(String nroCelular) {
 		this.nroCelular = nroCelular;
 	}
+	public Nacionalidad getNacionalidad() {
+		return nacionalidad;
+	}
+	public void setNacionalidad(Nacionalidad nacionalidad) {
+		this.nacionalidad = nacionalidad;
+	}
+	
 
 	@Override
 	public String toString() {
@@ -59,7 +68,4 @@ public class Alumno {
 				+ nombreApellido + ", email=" + email + ", nroCelular="
 				+ nroCelular + "]";
 	}
-	
-	
-
 }

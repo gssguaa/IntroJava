@@ -5,12 +5,15 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLType;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
 import py.edu.uaa.pooj.example.tpfinal.model.Alumno;
 import py.edu.uaa.pooj.example.tpfinal.model.Curso;
+import py.edu.uaa.pooj.example.tpfinal.model.Nacionalidad;
 
 /**
  * 
@@ -26,7 +29,7 @@ public class AlumnoDao {
 	private static final String DB_CONNECTION = "jdbc:postgresql://localhost:5432/practica";
 	private static final String DB_USER = "gsoria";
 	private static final String DB_PASSWORD = "postgres";
-	
+	private NacionalidadDao nacionalidadDao = new NacionalidadDao();
 	
 	/**
 	 * Metodo que permite validar si un alumno esta registrado en un determinado curso
@@ -87,10 +90,15 @@ public class AlumnoDao {
  
 		Connection dbConnection = null;
 		PreparedStatement preparedStatement = null;
- 
+
+		/*
 		String insertTableSQL = "INSERT INTO alumno"
 				+ "(nro_cedula, nombre_apellido, email, nro_celular) VALUES"
 				+ "(?,?,?,?)";
+		*/
+		String insertTableSQL = "INSERT INTO alumno"
+				+ "(nro_cedula, nombre_apellido, email, nro_celular, codigo_nacionalidad) VALUES"
+				+ "(?,?,?,?,?)";
  
 		try {
 			dbConnection = getDBConnection();
@@ -103,6 +111,14 @@ public class AlumnoDao {
 			preparedStatement.setString(2, alumno.getNombreApellido());
 			preparedStatement.setString(3, alumno.getEmail());
 			preparedStatement.setString(4, alumno.getNroCelular());
+			
+			if (alumno.getNacionalidad() != null) {
+				// Grabar el c�digo de la nacionalidad del alumno
+				preparedStatement.setString(5, alumno.getNacionalidad().getCodigo());
+			} else {
+				// Grabar null como nacionalidad
+				preparedStatement.setNull(5, Types.CHAR);
+			}
  
 			// execute insert SQL stetement
 			preparedStatement.executeUpdate();
@@ -147,6 +163,13 @@ public class AlumnoDao {
 				alumno.setNombreApellido(rs.getString(2));
 				alumno.setEmail(rs.getString(3));
 				alumno.setNroCelular(rs.getString(4));
+				
+				// Agregado! obtener la nacionalidad, usando el NacionalidadDao
+				String codigoNacionalidad = rs.getString(5);
+				if (codigoNacionalidad != null) {
+					Nacionalidad nacionalidad = this.nacionalidadDao.recuperarNacionalidadPorCodigo(codigoNacionalidad);
+					alumno.setNacionalidad(nacionalidad);
+				}
 				
 				alumnos.add(alumno);
 			}			
