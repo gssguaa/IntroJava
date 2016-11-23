@@ -136,6 +136,33 @@ public class AlumnoView {
 		
 		
 		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				//Se crea un objeto del modelo
+				Alumno alumno = new Alumno();
+			
+				String nroCedula = txtNroCedula.getText();
+				alumno.setNroCedula(Integer.valueOf(nroCedula));
+				
+				//Las demas propiedades no necesitan la conversion
+				alumno.setNombreApellido(txtNombre.getText());
+				
+				alumno.setEmail(txtEmail.getText());
+				
+				alumno.setNroCelular(txtCelular.getText());
+
+				AlumnoDao alumnoDao = new AlumnoDao();
+				Boolean isDeleted = alumnoDao.eliminarAlumno(alumno);
+			
+				if (isDeleted){
+			        JOptionPane.showMessageDialog(null, "Alumno eliminado correctamente", "", JOptionPane.INFORMATION_MESSAGE);
+				}else{
+			        JOptionPane.showMessageDialog(null, "No se pudo eliminar el registro del alumno", null, JOptionPane.ERROR_MESSAGE, null);
+				}
+				
+			}
+		});
 		
 		JButton btnActualizar = new JButton("Actualizar");
 		

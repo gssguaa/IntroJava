@@ -146,6 +146,86 @@ public class AlumnoDao {
  
 	}
 
+	public boolean eliminarAlumno(Alumno alumno){
+		Connection dbConnection = null;
+		PreparedStatement preparedStatement = null;
+		//los parametros del where son en base a la necesidad de la logica de negocio.
+		String deleteSQL = "DELETE from alumno WHERE nro_cedula = ?";
+
+		try {
+			dbConnection = getDBConnection();
+			preparedStatement = dbConnection.prepareStatement(deleteSQL);
+			preparedStatement.setInt(1, alumno.getNroCedula());
+
+			// execute delete SQL stetement
+			preparedStatement.executeUpdate();
+
+			System.out.println("Record is deleted!");
+			return true;
+			
+		} catch (SQLException e) {
+
+			System.out.println(e.getMessage());
+
+		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+
+				if (dbConnection != null) {
+					dbConnection.close();
+				}
+			} catch (Exception e2) {
+				System.out.println(e2.getMessage());
+			}
+
+		}
+		return false;
+
+	}
+
+	public boolean actualizarAlumno(Alumno alumno){
+		Connection dbConnection = null;
+		PreparedStatement preparedStatement = null;
+		//los parametros del where son en base a la necesidad de la logica de negocio.
+		String updateSql = "UPDATE alumno set email = ?, nro_celular = ? WHERE nro_cedula = ?";
+
+		try {
+			dbConnection = getDBConnection();
+			preparedStatement = dbConnection.prepareStatement(updateSql);
+			preparedStatement.setString(1, alumno.getEmail());
+			preparedStatement.setString(2, alumno.getNroCelular());
+			preparedStatement.setInt(3, alumno.getNroCedula());
+			
+			// execute delete SQL stetement
+			preparedStatement.executeUpdate();
+
+			System.out.println("Record is updated!");
+			return true;
+			
+		} catch (SQLException e) {
+
+			System.out.println(e.getMessage());
+
+		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+
+				if (dbConnection != null) {
+					dbConnection.close();
+				}
+			} catch (Exception e2) {
+				System.out.println(e2.getMessage());
+			}
+
+		}
+		return false;
+
+	}
+
 	public List<Alumno> recuperarAlumnos() {
 		Connection dbConnection = null;
 		Statement statement = null;
