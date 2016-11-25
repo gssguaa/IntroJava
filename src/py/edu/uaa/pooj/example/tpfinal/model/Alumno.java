@@ -1,4 +1,7 @@
 package py.edu.uaa.pooj.example.tpfinal.model;
+
+import java.util.Date;
+
 /**
  * 
  * @author gsoria
@@ -12,6 +15,7 @@ public class Alumno {
 	private String nombreApellido;
 	private String email;
 	private String nroCelular;
+	private Date fechaNacimiento;
 	private Nacionalidad nacionalidad;
 	
 	//constructor
@@ -60,7 +64,14 @@ public class Alumno {
 	public void setNacionalidad(Nacionalidad nacionalidad) {
 		this.nacionalidad = nacionalidad;
 	}
-	
+
+	public Date getFechaNacimiento() {
+		return fechaNacimiento;
+	}
+
+	public void setFechaNacimiento(Date fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
+	}
 
 	@Override
 	public String toString() {

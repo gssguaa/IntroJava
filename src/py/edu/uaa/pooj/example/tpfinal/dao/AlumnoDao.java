@@ -1,6 +1,7 @@
 package py.edu.uaa.pooj.example.tpfinal.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -86,6 +87,7 @@ public class AlumnoDao {
 		
 	}
  
+	
 	public boolean insertarAlumno(Alumno alumno) throws SQLException {
  
 		Connection dbConnection = null;
@@ -97,8 +99,8 @@ public class AlumnoDao {
 				+ "(?,?,?,?)";
 		*/
 		String insertTableSQL = "INSERT INTO alumno"
-				+ "(nro_cedula, nombre_apellido, email, nro_celular, codigo_nacionalidad) VALUES"
-				+ "(?,?,?,?,?)";
+				+ "(nro_cedula, nombre_apellido, email, nro_celular, codigo_nacionalidad, fecha_nacimento) VALUES"
+				+ "(?,?,?,?,?,?)";
  
 		try {
 			dbConnection = getDBConnection();
@@ -119,7 +121,10 @@ public class AlumnoDao {
 				// Grabar null como nacionalidad
 				preparedStatement.setNull(5, Types.CHAR);
 			}
- 
+
+		    java.sql.Date fechaNacimAlumnoSqlDate = new java.sql.Date(alumno.getFechaNacimiento().getTime());
+			preparedStatement.setDate(6, fechaNacimAlumnoSqlDate);
+			
 			// execute insert SQL stetement
 			preparedStatement.executeUpdate();
 		

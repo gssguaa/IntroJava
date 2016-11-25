@@ -22,6 +22,9 @@ import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Date;
+
+import com.toedter.calendar.JDateChooser;
 
 /**
  * Clase que tiene la responsabilidad de manejar la interfaz de usuario, 
@@ -42,7 +45,7 @@ public class AlumnoView {
 	private JTextField txtNombre;
 	private JTextField txtEmail;
 	private JTextField txtCelular;
-
+	private JDateChooser txtFechaNacimiento;
 	/**
 	 * Launch the application.
 	 */
@@ -115,6 +118,7 @@ public class AlumnoView {
 					
 					alumno.setNroCelular(txtCelular.getText());
 
+					alumno.setFechaNacimiento(txtFechaNacimiento.getDate());
 					AlumnoDao alumnoDao = new AlumnoDao();
 					Boolean isInserted = alumnoDao.insertarAlumno(alumno);
 					
@@ -185,12 +189,20 @@ public class AlumnoView {
 		
 		txtCelular = new JTextField();
 		txtCelular.setColumns(10);
+		
+		JLabel lblFechaDeNacimiento = new JLabel("Fecha de nacimiento");
+		
+		txtFechaNacimiento = new JDateChooser();
 		GroupLayout groupLayout = new GroupLayout(frmAlumnoView.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(23)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(lblFechaDeNacimiento)
+							.addGap(18)
+							.addComponent(txtFechaNacimiento, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(btnAgregar)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
@@ -203,13 +215,13 @@ public class AlumnoView {
 								.addComponent(lblNombre)
 								.addComponent(lblEmail)
 								.addComponent(lblCelular))
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(txtNroCedula, GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
-								.addComponent(txtNombre)
-								.addComponent(txtEmail)
-								.addComponent(txtCelular))))
-					.addContainerGap(64, Short.MAX_VALUE))
+							.addGap(73)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(txtCelular, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(txtNombre, 176, 176, 176)
+								.addComponent(txtNroCedula, GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+								.addComponent(txtEmail, 176, 176, 176))))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
@@ -226,11 +238,15 @@ public class AlumnoView {
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblEmail)
 						.addComponent(txtEmail, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+					.addGap(7)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addComponent(lblCelular)
 						.addComponent(txtCelular, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+					.addGap(8)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addComponent(lblFechaDeNacimiento)
+						.addComponent(txtFechaNacimiento, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnAgregar)
 						.addComponent(btnEliminar)
@@ -239,6 +255,4 @@ public class AlumnoView {
 		);
 		frmAlumnoView.getContentPane().setLayout(groupLayout);
 	}
-	
-	
 }

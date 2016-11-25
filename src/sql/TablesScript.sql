@@ -101,3 +101,16 @@ ALTER TABLE alumno_curso
   FOREIGN KEY (nro_curso)
   REFERENCES curso
   ON DELETE CASCADE;
+  
+  
+ALTER TABLE alumno
+	ADD COLUMN fecha_nacimento date;
+
+--queries de prueba de escritorio
+
+--select * from alumno;
+--select * from nacionalidad;
+--UPDATE  alumno set email = 'gabrielasoriagrosso@hotmail.com' WHERE nro_cedula = 7713114
+--UPDATE alumno set email = 'soria.gaby@gmail.com', nro_celular = '0972778177' WHERE nro_cedula = 7713114
+
+  
